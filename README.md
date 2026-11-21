@@ -52,7 +52,7 @@ The **Syslog Relay** and **TI Mirror** components are themselves open-source pro
 
 ## Architecture
 
-![Splunk Watchdog Architecture](docs/images/architecture.webp)
+<img src="docs/images/architecture.png" alt="Splunk Watchdog Architecture" width="80%">
 
 *High-level architecture: the Watchdog VM monitors the Splunk stack (Search Head, Indexer) plus the companion Syslog Relay and TI Mirror projects over REST API, SSH, and UDP.*
 
@@ -303,4 +303,3 @@ limitations under the License.
 
 **If this project helps you run your Splunk environment more reliably, please ⭐ star the repo — it helps others find it.**
 
----
