@@ -52,7 +52,7 @@ The **Syslog Relay** and **TI Mirror** components are themselves open-source pro
 
 ## Architecture
 
-<img src="docs/images/architecture.png" alt="Splunk Watchdog Architecture" width="80%">
+<img src="docs/images/architecture.png" alt="Splunk Watchdog Architecture" width="90%">
 
 *High-level architecture: the Watchdog VM monitors the Splunk stack (Search Head, Indexer) plus the companion Syslog Relay and TI Mirror projects over REST API, SSH, and UDP.*
 
@@ -83,7 +83,8 @@ splunk-watchdog/
 ├── docs/
 │   ├── RUNBOOK.md                    # Full operations runbook
 │   └── images/
-│       └── architecture.webp         # Architecture diagram
+│       ├── architecture.png          # Architecture diagram
+│       └── sample_alert.png          # Sample Bale alert
 └── README.md
 ```
 
@@ -198,6 +199,12 @@ Alerts are sent to **Bale Messenger** (a popular Iranian messenger) via webhook,
 - **Self-monitoring alerts:** every 30 minutes when the Watchdog itself has problems
 
 The webhook format is intentionally generic and can be adapted to Slack, Telegram, Discord, or any HTTP endpoint.
+
+### Sample Alert
+
+<img src="docs/images/sample_alert.png" alt="Sample Bale Alert" width="50%">
+
+*Example of a real alert delivered to the Bale messenger, showing severity prefixes and component details.*
 
 ---
 
