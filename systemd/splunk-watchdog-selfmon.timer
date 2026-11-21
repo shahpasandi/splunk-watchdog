@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Splunk Watchdog Self-Monitoring every 30 minutes
+
+[Timer]
+OnCalendar=*-*-* *:00,30:00
+Persistent=true
+RandomizedDelaySec=60
+Unit=splunk-watchdog-selfmon.service
+
+[Install]
+WantedBy=timers.target

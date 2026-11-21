@@ -1,0 +1,44 @@
+# Template for remote logs based on device type
+$template RemoteLogs,"/var/log/remote/%FROMHOST-IP%/%$year%-%$month%-%$day%-%$hour%.log"
+
+# Ruleset for remote logs
+ruleset(name="remote") {
+
+    # Watchdog: route ALL logs from the Watchdog VM IP
+    # IMPORTANT: Replace <WATCHDOG_IP> with your Watchdog server's actual IP
+    if $fromhost-ip == '<WATCHDOG_IP>' then {
+        $template WatchdogLogs,"/var/log/remote/watchdog/%FROMHOST-IP%/%$year%-%$month%-%$day%-%$hour%.log"
+        *.* ?WatchdogLogs
+        & stop
+    }
+
+    # FortiGate
+    # IMPORTANT: Replace <FORTIGATE_IP> with your FortiGate firewall's actual IP
+    if $fromhost-ip == '<FORTIGATE_IP>' then {
+        $template FortiGateLogs,"/var/log/remote/fortigate/%FROMHOST-IP%/%$year%-%$month%-%$day%-%$hour%.log"
+        *.* ?FortiGateLogs
+        & stop
+    }
+
+    # Sophos
+    # IMPORTANT: Replace <SOPHOS_IP_1>, <SOPHOS_IP_2> etc. with your Sophos device IPs
+    if $fromhost-ip == '<SOPHOS_IP_1>' or $fromhost-ip == '<SOPHOS_IP_2>' then {
+        $template SophosLogs,"/var/log/remote/sophos/%FROMHOST-IP%/%$year%-%$month%-%$day%-%$hour%.log"
+        *.* ?SophosLogs
+        & stop
+    }
+
+    # Cisco - All Cisco devices
+    # IMPORTANT: Adjust the IP ranges to match your network topology
+    if $fromhost-ip startswith '<CISCO_SUBNET_1>'
+    or $fromhost-ip startswith '<CISCO_SUBNET_2>' then {
+        $template CiscoLogs,"/var/log/remote/cisco/%FROMHOST-IP%/%$year%-%$month%-%$day%-%$hour%.log"
+        *.* ?CiscoLogs
+        & stop
+    }
+
+    # Default: other devices
+    $template DefaultLogs,"/var/log/remote/others/%FROMHOST-IP%/%$year%-%$month%-%$day%-%$hour%.log"
+    *.* ?DefaultLogs
+    & stop
+}

@@ -1,0 +1,6 @@
+[Unit]
+Description=Cleanup old health check records
+
+[Service]
+Type=oneshot
+ExecStart=/opt/splunk-watchdog/scripts/cleanup_db.sh

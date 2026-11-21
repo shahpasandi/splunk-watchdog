@@ -1,0 +1,27 @@
+# Sensitive Config
+watchdog.ini
+*.ini
+!config/watchdog.ini.example
+!*.ini.example
+
+# Logs & DB
+*.log
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+
+# OS X / Windows
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

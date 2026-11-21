@@ -1,0 +1,13 @@
+[Unit]
+Description=Splunk Watchdog Health Check
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/splunk-watchdog
+ExecStart=/opt/splunk-watchdog/venv/bin/python3 /opt/splunk-watchdog/scripts/health_check.py
+TimeoutStartSec=180
+StandardOutput=journal
+StandardError=journal

@@ -1,0 +1,77 @@
+[general]
+db_path = /opt/splunk-watchdog/db/health.db
+log_path = /opt/splunk-watchdog/logs/watchdog.log
+
+[splunk]
+# Splunk Search Head
+sh_host = <SEARCH_HEAD_FQDN_OR_IP>
+sh_port = 8089
+sh_user = <SPLUNK_ADMIN_USER>
+sh_token = <YOUR_SEARCH_HEAD_TOKEN>
+
+# Splunk Indexer
+idx_host = <INDEXER_FQDN_OR_IP>
+idx_port = 8089
+idx_user = <SPLUNK_ADMIN_USER>
+idx_token = <YOUR_INDEXER_TOKEN>
+
+# Syslog-Relay (SSH)
+relay_host = <SYSLOG_RELAY_FQDN_OR_IP>
+relay_user = <SYSLOG_RELAY_SSH_USER>
+
+# TI-Mirror (SSH)
+ti_host = <TI_MIRROR_FQDN_OR_IP>
+ti_user = <TI_MIRROR_SSH_USER>
+
+[e2e]
+probe_marker = watchdog_e2e_probe
+test_index = watchdog
+test_sourcetype = watchdog:e2e
+search_delay = 30
+max_event_age = 300
+
+[network]
+# Ping Check
+sh_ip = <SEARCH_HEAD_IP>
+idx_ip = <INDEXER_IP>
+relay_ip = <SYSLOG_RELAY_IP>
+ti_ip = <TI_MIRROR_IP>
+
+# Ports
+splunk_web_port = 8000
+splunk_mgmt_port = 8089
+splunk_s2s_port = 9997
+syslog_udp_port = 514
+ssh_port = 22
+
+[ssh]
+key_path = /root/.ssh/id_ed25519
+
+[thresholds]
+# Disk usage thresholds (in percent)
+disk_warn = 80
+disk_crit = 90
+
+# Indexer queue thresholds (in percent of max)
+queue_warn = 70
+queue_crit = 90
+
+# Load average threshold
+loadavg_warn = 8.0
+
+# Watchdog self-monitoring
+watchdog_disk_warn = 80
+watchdog_disk_crit = 90
+
+[heartbeat]
+# Send heartbeat every hour
+enabled = true
+# Heartbeat interval in seconds (3600 = 1 hour)
+interval_seconds = 3600
+# File to track last heartbeat time
+state_file = /opt/splunk-watchdog/db/.last_heartbeat
+
+[webhook]
+# Bale Messenger Webhook URL
+# Format: https://tapi.bale.ai/bot<BOT_TOKEN>/sendMessage?chat_id=<CHAT_ID>&text=$result.bale$
+url = <YOUR_BALE_WEBHOOK_URL>

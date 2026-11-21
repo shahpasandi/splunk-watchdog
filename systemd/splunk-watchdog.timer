@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Splunk Watchdog every 15 minutes
+
+[Timer]
+OnCalendar=*-*-* *:00,15,30,45:00
+Persistent=true
+RandomizedDelaySec=30
+Unit=splunk-watchdog.service
+
+[Install]
+WantedBy=timers.target

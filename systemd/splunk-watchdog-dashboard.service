@@ -1,0 +1,15 @@
+[Unit]
+Description=Splunk Watchdog Web Dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/splunk-watchdog
+ExecStart=/opt/splunk-watchdog/venv/bin/python3 /opt/splunk-watchdog/scripts/dashboard.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
