@@ -1,13 +1,3 @@
-هر دو موردی که اشاره کردید کاملاً درست و نشان‌دهنده دقت بالای شماست. 
-
-در فایل `README.md` که فرستادید، **مورد اول (پوشه syslog-relay)** نیاز به اصلاح دارد. در بخش `Repository Structure`، فایل `inputs.conf` جا افتاده است.
-**مورد دوم (سرویس داشبورد)** مربوط به فایل `RUNBOOK.md` است، اما از آنجا که در حال نهایی‌سازی `README.md` هستیم، من بخش نصب (Quick Start) را هم بررسی کردم که خوشبختانه سرویس داشبورد در آنجا به درستی `enable` شده است. برای اینکه `RUNBOOK.md` هم کامل شود، کد آن سرویس را در انتها برایتان قرار می‌دهم تا به رانبوک اضافه کنید.
-
-در اینجا **نسخه نهایی و اصلاح‌شده `README.md`** با اعمال مورد اول قرار دارد (همچنین بخش Author کمی خلاصه‌تر شد تا با وب‌سایت شما هماهنگ باشد):
-
-### فایل نهایی `README.md`:
-
-```markdown
 # Splunk Watchdog
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -312,6 +302,5 @@ limitations under the License.
 ---
 
 **If this project helps you run your Splunk environment more reliably, please ⭐ star the repo — it helps others find it.**
-```
 
 ---
